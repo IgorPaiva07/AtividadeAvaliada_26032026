@@ -7,8 +7,25 @@
 
 ---
 
-## 1. Escopo do MVP
-Meu MVP cobre o processo essencial de operação de uma rede farmacêutica, focando na entrada de mercadorias e a venda segura ao consumidor final.
+# Escopo do MVP 
+
+## O que está dentro do MVP
+- **Cadastro de clientes** (CPF e Nome)  
+- **Controle de estoque** com verificação de validade e saldo disponível  
+- **Venda de medicamentos comuns e psicotrópicos** com regras de conformidade  
+- **Lançamento de Notas Fiscais via XML**  
+- **Geração de arquivos fiscais (SPED)** para contabilidade  
+
+## O que está fora do MVP
+- **Vendas online (e-commerce)**  
+- **Gestão de escala de funcionários**  
+- **Integração com programas de fidelidade externos**  
+
+## Justificativa das escolhas
+O MVP foi definido para atender às necessidades **essenciais** de uma farmácia física  
+- **melhoras no escritorio:** gestão eficiente de estoque e impostos.  
+- **Operação para um venda melhor:** funcionalidades básicas para atender clientes e manter o fluxo de vendas.  
+
 
 **Dentro do escopo:**
 - Cadastro de clientes  
@@ -18,40 +35,37 @@ Meu MVP cobre o processo essencial de operação de uma rede farmacêutica, foca
 - Geração de arquivos fiscais (SPED)  
 
 **Fora do escopo:**
-- Vendas online (e-commerce)  
-- Gestão de escala de funcionários  
+- Vendas online (e-commerce) para farmacias que não possuem
+- Gestão de escala de funcionários que sabem seus horarios  
 - Integração com programas de fidelidade externos  
-
-**Justificativa:**  
-O foco é garantir a conformidade sanitária (controle de receitas) e a saúde financeira (gestão de estoque e impostos), que são os pilares de uma farmácia física funcional e dentro da legalidade.
 
 ---
 
 ## 2. Regras de Negócio (RN)
-- **RN01 — Bloqueio de Saldo:** Não permitir a venda de produtos sem saldo em estoque, especialmente psicotrópicos.  
-- **RN02 — Verificação de Validade:** Impedir o registro de qualquer item com validade expirada.  
-- **RN03 — Juros de Atraso:** Contas de clientes em atraso devem gerar incidência de juros automáticos.  
-- **RN04 — Controle de Psicotrópicos:** Medicamentos controlados exigem validação da receita pelo Farmacêutico responsável.  
-- **RN05 — Alerta de Reposição:** O sistema deve emitir alerta quando o estoque atingir o mínimo.  
+- **RN01 — Bloqueio de Saldo:** Não permitir a venda de produtos sem saldo em estoque, especialmente psicotrópicos para não gerar multas.  
+- **RN02 — Verificação de Validade:** Impedir o registro de qualquer item com validade expirada para sempre manter o cliente satisfeito.  
+- **RN03 — Juros de Atraso:** Contas de clientes em atraso devem gerar juros automáticos.  
+- **RN04 — Controle de Psicotrópicos:** Medicamentos controlados exigem validação da receita pelo Farmacêutico responsável pela farmacia.  
+- **RN05 — Alerta de Reposição:** O sistema deve emitir alerta quando o estoque atingir o mínimo para poder gerar o pedidos de compras.  
 
 ---
 
 ## 3. Requisitos Funcionais (RF)
 - **RF01:** Cadastro e atualização de clientes (CPF e Nome).  
-- **RF02:** Consulta de produtos por código de barras, exibindo saldo e validade.  
-- **RF03:** Registro de vendas com aplicação de descontos baseados no preço de custo.  
+- **RF02:** Consulta de produtos por código de barras, exibindo saldo e validade do produto.  
+- **RF03:** Registro de vendas com descontos baseados no preço de custo desses produtos .  
 - **RF04:** Verificação de estoque em tempo real e sinalização de limite mínimo.  
-- **RF05:** Emissão de comprovante de venda ou Nota Fiscal Eletrônica (NFC-e).  
-- **RF06:** Cadastro manual de novos produtos recebidos.  
-- **RF07:** Importação de XML de notas de compra para entrada de mercadorias.  
+- **RF05:** Emissão de comprovante de venda ou Nota Fiscal Eletrônica (NFC-e) para empresas que precisam da nota.  
+- **RF06:** Cadastro manual de novos produtos recebidos pelas distribuidoras.  
+- **RF07:** Importação de XML de notas de compra para entrada de mercadorias no sistema.  
 - **RF08:** Geração de arquivos SPED para contabilidade.  
 
 ---
 
 ## 4. Requisitos Não Funcionais (RNF)
-- **RNF01 — Autenticação:** Acesso restrito via login e senha criptografada.  
-- **RNF02 — Performance:** Consultas de estoque e vendas em tempo real.  
-- **RNF03 — Segurança:** Garantir integridade e sigilo dos dados (LGPD).  
+- **RNF01 — Autenticação:** Acesso restrito via login e senha criptografada para poder entrar no sistema da rede da farmacia.  
+- **RNF02 — Performance:** Consultas de estoque e vendas em tempo real sempre que precisar.  
+- **RNF03 — Segurança:** Garantir integridade e sigilo dos dados dos clientes que precisam passar por conta dos psicotropicos (LGPD).  
 - **RNF04 — Multi-usuário:** Suporte simultâneo para Atendentes, Gerentes e Farmacêuticos.  
 
 ---
