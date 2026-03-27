@@ -41,9 +41,9 @@ Atendente, Farmacêutico, Gerente, Financeiro, Administrador/suporte do programa
 ## 6. Relacionamentos
 
 <<include>>
-- Venda → Consultar Produto  
-- Venda → Verificar Estoque  
-- Compra → Atualizar Estoque  
+- Registrar Venda → Consultar Validade (Segurança do paciente).  
+- Registrar Venda → Verificar Saldo de Estoque
+- Lançar XML de Compra → Atualizar Estoque.
 
 <<extend>>
 - Venda → Cadastrar Cliente  
@@ -54,8 +54,7 @@ Atendente, Farmacêutico, Gerente, Financeiro, Administrador/suporte do programa
 
 **Registrar Venda**  
 Ator: Atendente  
-Fluxo: selecionar produto → verificar estoque → informar quantidade → finalizar  
-Alt: sem estoque / cliente não cadastrado  
+Fluxo: selecionar produto → verificar validade → verificar estoque → informar quantidade → finalizar venda → emitir cupom.  
 
 **Consultar Produto**  
 Ator: Atendente  
