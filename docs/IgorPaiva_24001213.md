@@ -51,7 +51,7 @@ O MVP foi definido para atender às necessidades **essenciais** de uma farmácia
 ---
 
 ## 3. Requisitos Funcionais (RF)
-- **RF01:** Cadastro e atualização de clientes (CPF e Nome).  
+- **RF01:** Cadastro e atualização de clientes (CPF,Nome e endereço).  
 - **RF02:** Consulta de produtos por código de barras, exibindo saldo e validade do produto.  
 - **RF03:** Registro de vendas com descontos baseados no preço de custo desses produtos .  
 - **RF04:** Verificação de estoque em tempo real e sinalização de limite mínimo.  
@@ -92,10 +92,10 @@ O MVP foi definido para atender às necessidades **essenciais** de uma farmácia
 - **Pós-condições:** Estoque atualizado; Venda registrada no financeiro.  
 
 ### Fluxo Principal
-1. O Atendente inicia a venda.  
+1. O atendente inicia a venda.  
 2. O Sistema solicita a identificação do produto.  
 3. O Atendente bipa o código de barras.  
-4. O Sistema valida o estoque e a validade (Include).  
+4. O Sistema valida o estoque e a validade.  
 5. O Atendente confirma o pagamento e finaliza a venda.  
 
 ### Fluxos Alternativos / Exceções
