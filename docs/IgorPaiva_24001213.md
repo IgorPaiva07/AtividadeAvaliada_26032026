@@ -1,101 +1,89 @@
-# Sistema Integrado de Gestão de Farmácia – Saúde & Vida
+# Avaliação — Engenharia de Software  
+## Sistema Integrado de Gestão de Farmácia — Saúde & Vida  
 
-## 1. Regras de Negócio
-1. Não permirtir vender produtos sem estoque.
-2. conferir sempre as validades dos medicamentos.
-3. contas de clientes atrasadas geram juros.
-4. estoque de psicotropicos sempre atualizado.
-5. Produtos que estão abaixo do mínimo geram alerta.
+**Aluno:** [Seu Nome Aqui]  
+**RA:** 24001213  
+**Data:** 26/03/2026  
 
-## 2. Requisitos Funcionais
-1. Realizar cadastro dos clientes.
-2. Consultar produtos e verificar a data de validade.
-3. Registrar vendas e dar desconto ao cliente .
-4. Verificar estoque e conferindo o minimo do medicamento.
-5. Emitir comprovante de venda ou NFE para empresa.
-6. Cadastrar produtos que chegaram novos.
-7. Lançar o XML da nota de compra.
-8. gerar o sped para o escritorio.
+---
 
-## 3. Requisitos Não Funcionais
-1. Controle de acesso por login.
-2. Resposta até 3 segundos.
-3. Segurança dos dados.
-4. Suporte a múltiplos usuários.
+## 1. Escopo do MVP
+Meu MVP cobre o processo essencial de operação de uma rede farmacêutica, focando na entrada de mercadorias e a venda segura ao consumidor final.
 
-## 4. Atores
-Atendente, Farmacêutico, Gerente, Financeiro, Administrador/suporte do programa.
+**Dentro do escopo:**
+- Cadastro de clientes  
+- Controle de estoque  
+- Venda de medicamentos comuns e psicotrópicos  
+- Lançamento de Notas Fiscais via XML  
+- Geração de arquivos fiscais (SPED)  
 
-## 5. Casos de Uso
-1. Registrar a Venda  
-2. Consultar o Produto que for vender 
-3. Cadastrar o CPF Cliente  
-4. Validar Receita  
-5. conferir notas dos produtos que acabaram de chegar pelas distribuidoras  
-6. Atualizar Estoque  
-7. arrumar problemas que aparecem 
-8. Registrar Conta a Pagar  
-9. gerar o sped ICMS e Contribuições 
-10. emitir um relatorio de estoque para contadora 
+**Fora do escopo:**
+- Vendas online (e-commerce)  
+- Gestão de escala de funcionários  
+- Integração com programas de fidelidade externos  
 
-## 6. Relacionamentos
+**Justificativa:**  
+O foco é garantir a conformidade sanitária (controle de receitas) e a saúde financeira (gestão de estoque e impostos), que são os pilares de uma farmácia física funcional e dentro da legalidade.
 
-<<include>>
-- Registrar Venda → Consultar Validade (Segurança do paciente).  
-- Registrar Venda → Verificar Saldo de Estoque
-- Lançar XML de Compra → Atualizar Estoque.
+---
 
-<<extend>>
-- Venda → Cadastrar Cliente  
-- Venda → Validar Receita  
-- Venda → Conta a Receber  
+## 2. Regras de Negócio (RN)
+- **RN01 — Bloqueio de Saldo:** Não permitir a venda de produtos sem saldo em estoque, especialmente psicotrópicos.  
+- **RN02 — Verificação de Validade:** Impedir o registro de qualquer item com validade expirada.  
+- **RN03 — Juros de Atraso:** Contas de clientes em atraso devem gerar incidência de juros automáticos.  
+- **RN04 — Controle de Psicotrópicos:** Medicamentos controlados exigem validação da receita pelo Farmacêutico responsável.  
+- **RN05 — Alerta de Reposição:** O sistema deve emitir alerta quando o estoque atingir o mínimo.  
 
-## 7. Casos de Uso 
+---
 
-**Registrar Venda**  
-Ator: Atendente  
-Fluxo: selecionar produto → verificar validade → verificar estoque → informar quantidade → finalizar venda → emitir cupom.  
+## 3. Requisitos Funcionais (RF)
+- **RF01:** Cadastro e atualização de clientes (CPF e Nome).  
+- **RF02:** Consulta de produtos por código de barras, exibindo saldo e validade.  
+- **RF03:** Registro de vendas com aplicação de descontos baseados no preço de custo.  
+- **RF04:** Verificação de estoque em tempo real e sinalização de limite mínimo.  
+- **RF05:** Emissão de comprovante de venda ou Nota Fiscal Eletrônica (NFC-e).  
+- **RF06:** Cadastro manual de novos produtos recebidos.  
+- **RF07:** Importação de XML de notas de compra para entrada de mercadorias.  
+- **RF08:** Geração de arquivos SPED para contabilidade.  
 
-**Consultar Produto**  
-Ator: Atendente  
-Fluxo: buscar → verificar o produto → bater codigo de barras
+---
 
-**Cadastrar Cliente**  
-Ator: Atendente  
-Fluxo: inserir dados se for cadastrado → lançar dados da receita → finalizar a venda  
+## 4. Requisitos Não Funcionais (RNF)
+- **RNF01 — Autenticação:** Acesso restrito via login e senha criptografada.  
+- **RNF02 — Performance:** Consultas de estoque e vendas em tempo real.  
+- **RNF03 — Segurança:** Garantir integridade e sigilo dos dados (LGPD).  
+- **RNF04 — Multi-usuário:** Suporte simultâneo para Atendentes, Gerentes e Farmacêuticos.  
 
-**Validar Receita**  
-Ator: Farmacêutico  
-Fluxo: conferir a receita → validar se entregaram o medicamento correto → lançar a receita no ANVISA  
+---
 
-**Conferir notas dos produtos que acabaram de chegar pelas distribuidoras **  
-Ator: Atendente 
-Fluxo: conferir quantidade → conferir a data de validade → guardar o medicamento nas prateleiras 
+## 5. Casos de Uso (Geral)
+- Registrar Venda  
+- Consultar Produto (<<include>> de Venda)  
+- Cadastrar Cliente (<<extend>> de Venda)  
+- Validar Receita (<<extend>> de Venda)  
+- Conferir Notas (XML)  
+- Atualizar Estoque (<<include>> de Compra/Venda)  
+- Manutenção do Sistema (Suporte)  
+- Registrar Conta a Pagar  
+- Gerar SPED ICMS/Contribuições  
+- Emitir Relatório de Estoque (Contadora)  
 
-**Atualizar Estoque**  
-Ator: administrador/suporte   
-Fluxo: receber operação → atualizar o estoque da loja  
+---
 
-**Arrumar problemas que aparecem no programa**  
-Ator: administrador/suporte
-Fluxo: localizar o erro → entender o que fala o programa → arrumar o erro → conferir se não está dando mais erro 
+## 6. Documentação do Caso de Uso Principal
+**UC01 — Registrar Venda**  
+- **Ator(es):** Atendente  
+- **Descrição:** Realizar a saída comercial de produtos para o cliente.  
+- **Pré-condições:** Operador logado; Produto com estoque disponível.  
+- **Pós-condições:** Estoque atualizado; Venda registrada no financeiro.  
 
-**Conta a Pagar**  
-Ator: Financeiro  
-Fluxo: inserir os boletos → conferir a data que eles vencerão → mandar pelo malote para o banco → dar baixa pelo programa os boletos que foram lançados  
+### Fluxo Principal
+1. O Atendente inicia a venda.  
+2. O Sistema solicita a identificação do produto.  
+3. O Atendente bipa o código de barras.  
+4. O Sistema valida o estoque e a validade (Include).  
+5. O Atendente confirma o pagamento e finaliza a venda.  
 
-**Gerar o sped ICMS e Contribuições**  
-Ator: Administrador/Suporte  
-Fluxo: gerar os sped nas datas corretas → ajustar com os M200, M400 → mandar para o escritorio para ser lançado
-
-**Emitir um relatorio de estoque para contadora**  
-Ator: Admin/suporte  
-Fluxo: gerar o relatorio → conferir o valor do estoque pelo preço de custo → enviar via PDF para o escritorio
-
-## 8. Diagramas de Atividade
-
-Venda: início → produto → estoque? → sim → finalizar / não → erro  
-
-Compra: início → dados → salvar → estoque → fim  
-
-Cliente: início → dados → salvar → fim  
+### Fluxos Alternativos / Exceções
+- **FA01 — Cadastro:** Se o cliente não existir, o sistema estende para *Cadastrar Cliente* (Extend).  
+- **FA02 — Psicotrópico:** Se o item for controlado, o sistema estende para *Validar Receita* (Extend).  
