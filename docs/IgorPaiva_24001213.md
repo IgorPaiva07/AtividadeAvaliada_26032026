@@ -1,7 +1,7 @@
 # Avaliação — Engenharia de Software  
 ## Sistema Integrado de Gestão de Farmácia — Saúde & Vida  
 
-**Aluno:** [Seu Nome Aqui]  
+**Aluno:** Igor Rogatti De Paiva  
 **RA:** 24001213  
 **Data:** 26/03/2026  
 
@@ -70,7 +70,7 @@ O MVP foi definido para atender às necessidades **essenciais** de uma farmácia
 
 ---
 
-## 5. Casos de Uso (Geral)
+## 5. Casos de Uso 
 - Registrar Venda  
 - Consultar Produto (<<include>> de Venda)  
 - Cadastrar Cliente (<<extend>> de Venda)  
@@ -100,4 +100,46 @@ O MVP foi definido para atender às necessidades **essenciais** de uma farmácia
 
 ### Fluxos Alternativos / Exceções
 - **FA01 — Cadastro:** Se o cliente não existir, o sistema estende para *Cadastrar Cliente* (Extend).  
-- **FA02 — Psicotrópico:** Se o item for controlado, o sistema estende para *Validar Receita* (Extend).  
+- **FA02 — Psicotrópico:** Se o item for controlado, o sistema estende para *Validar Receita* (Extend).
+
+- Registrar venda
+- <img width="580" height="338" alt="image" src="https://github.com/user-attachments/assets/6fa32d96-9a2a-49e5-b69b-900bc43221d4" />
+
+- consultar produto
+- <img width="207" height="202" alt="image" src="https://github.com/user-attachments/assets/2106e8b6-8f67-4c06-9128-980ffd57cb53" />
+
+-cadastrar cliente
+<img width="203" height="201" alt="image" src="https://github.com/user-attachments/assets/cb71cad0-382b-429d-9c5f-cc00d68708d2" />
+
+- validar receita
+- <img width="191" height="199" alt="image" src="https://github.com/user-attachments/assets/85c9ccd8-2efa-4de8-9d5b-f1c4042a2290" />
+
+- conferir notas
+- <img width="221" height="342" alt="image" src="https://github.com/user-attachments/assets/e591d42f-e7e8-4f6e-beb8-cbd4aae1aebf" />
+
+-atualizar estoque
+<img width="203" height="201" alt="image" src="https://github.com/user-attachments/assets/d67beb86-d0ef-4b75-93d4-3d9fb264e11a" />
+
+- manutenção do sistema
+<img width="237" height="208" alt="image" src="https://github.com/user-attachments/assets/4565b962-0579-4e3e-989e-8b9652c8a255" />
+
+- registrar conta a pagar
+- <img width="473" height="572" alt="image" src="https://github.com/user-attachments/assets/27feae00-14d2-4979-911c-8f3129b88f03" />
+
+- Gerar SPED ICMS/Contribuições
+<img width="394" height="516" alt="image" src="https://github.com/user-attachments/assets/fcb75715-eafc-4107-8fd1-d4a7e535ef8e" />
+
+- Emitir Relatório de Estoque
+- <img width="374" height="452" alt="image" src="https://github.com/user-attachments/assets/c137614e-3523-4eb1-9d83-929239d029e0" />
+
+
+
+
+
+
+
+
+
+
+
+
